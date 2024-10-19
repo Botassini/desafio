@@ -1,6 +1,6 @@
 const maxWidth = window.innerWidth;
 const maxHeight = window.innerHeight;
-const imageSize = 48; // Tamanho das imagens
+const imageSize = 48;
 
 const imgs = [
     'https://storage.googleapis.com/mokaly_public/assets/avatars/mokaly-avatar-cup-2.png',
