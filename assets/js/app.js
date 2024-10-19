@@ -28,41 +28,38 @@ acceptCookiesButton.addEventListener('click', function() {
 });
 
 repeatButton.addEventListener('click', function() {
-    imagesDisappeared = 0; // Resetar o contador de imagens desaparecidas
-    imageContainer.innerHTML = ''; // Limpar imagens anteriores
+    imagesDisappeared = 0;
+    imageContainer.innerHTML = '';
     createImages();
 });
 
 function createImages() {
-    repeatButton.style.display = 'none'; // Esconder o botão de repetir enquanto a sequência acontece
+    repeatButton.style.display = 'none';
     
-    // Atraso inicial de 2 segundos antes de mostrar as imagens
     setTimeout(() => {
         imgs.forEach((src, index) => {
             const img = document.createElement('img');
             img.src = src;
             img.classList.add('image');
 
-            // Definindo a posição inicial dentro dos limites da tela
-            const startX = Math.random() * (maxWidth - imageSize); // Garante que a imagem comece na largura da tela
-            const startY = (maxWidth > 768) ? maxHeight : -48; // Sobe do fundo ou desce do topo
+            const startX = Math.random() * (maxWidth - imageSize); 
+            const startY = (maxWidth > 768) ? maxHeight : -48;
 
             img.style.left = `${startX}px`;
-            img.style.transform = `translateY(${startY}px)`; // Começa de baixo ou de cima
+            img.style.transform = `translateY(${startY}px)`;
 
             imageContainer.appendChild(img);
-
+            
             setTimeout(() => {
-                // Define a posição final da animação
-                const endY = (maxWidth > 768) ? -imageSize : maxHeight; // Sobe até o topo ou desce até o fundo
-                img.style.transform = `translateY(${endY}px)`; // Animação
+                const endY = (maxWidth > 768) ? -imageSize : maxHeight;
+                img.style.transform = `translateY(${endY}px)`;
 
                 setTimeout(() => {
                     img.classList.add('none');
                     imagesDisappeared++;
                     if (imagesDisappeared === imgs.length) {
-                        audio.play(); // Tocar o áudio ao final
-                        repeatButton.style.display = 'block'; // Mostrar o botão de repetir após a sequência
+                        audio.play();
+                        repeatButton.style.display = 'block';
                     }
                 }, 3000); // 3 segundos para a animação final
             }, index * 2000);
@@ -71,7 +68,6 @@ function createImages() {
 }
 
 function playAudioIfImagesDisappeared() {
-    // Verifica se as imagens já desapareceram antes de tocar o áudio
     if (imagesDisappeared === imgs.length) {
         audio.play();
     }
