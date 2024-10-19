@@ -21,7 +21,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    pointer-events: none; /* Garante que as imagens não interfiram com o clique no botão */
+    pointer-events: none;
 }
 
 .image {
